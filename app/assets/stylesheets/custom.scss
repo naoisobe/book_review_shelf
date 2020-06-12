@@ -145,3 +145,20 @@ input {
   width: auto;
   margin-left: 0;
 }
+
+/* edit gravatar */
+.edit-gravatar {
+  margin: 10px;
+}
+
+/* Users index */
+
+.users {
+  list-style-type: none;
+  margin: 0;
+  li{
+    overflow: auto;
+    padding: 10px 0;
+    border-bottom: 1px solid $gray-lighter;
+  }
+}

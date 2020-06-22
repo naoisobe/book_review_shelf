@@ -1,0 +1,44 @@
+<div class="show">
+
+    <div class="center show-image">
+        <img src="http://images-jp.amazon.com/images/P/<%= @post.isbn_code %>.09.LZZZZZZZ">
+    </div>
+
+    <div class="post-message book-title-show">
+        <h4>本のタイトル</h4>
+        <p><%= @post.title %></p>
+    </div>
+
+   
+
+    <div class="post-message">
+        <h4>要約</h4>
+        <p><%= @post.summary %></p>
+    </div>
+
+    <div class="post-message">
+        <h4>感想</h4>
+        <p><%= @post.review %></p>
+    </div>
+
+    <div class="post-message">
+        <h4>メモ</h4>
+        <p><%= @post.note %></p>
+    </div>
+
+     <div class="post-user flex space">
+        <p class="bold"><%= @user.name %></p>
+        <p class="post-time"><%= @post.created_at.strftime("%Y-%m-%d %H:%M") %></p>
+    </div>
+    
+    <div class="">
+        <%= link_to "#{@user.name}", "/users/#{@user.id}" %>さんの投稿一覧を見る
+    </div>
+
+    <% if @post.user_id == @current_user.id %>
+        <ul class="flex flex-right">
+            <li class="content-edit"><%= link_to "編集", edit_post_path %></li>
+            <li class="content-edit"><%= link_to "削除", post_path, method: :delete,data: {confirm: "削除しますか？"} %></li>
+        </ul>
+    <% end %>
+</div>

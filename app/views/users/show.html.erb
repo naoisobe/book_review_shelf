@@ -3,6 +3,26 @@
   <%= @user.name %>
 </h1>
 
+<section class="stats">
+    <% @user ||= current_user %>
+    <div class="stats">
+        <a href="<%= following_user_path(@user) %>">
+            <strong id="following" class="stat">
+            <%= @user.following.count %>
+            </strong>
+            フォロー
+        </a>
+        <a href="<%= followers_user_path(@user) %>">
+            <strong id="followers" class="stat">
+            <%= @user.followers.count %>
+            </strong>
+            フォロワー
+        </a>
+    </div>
+</section>
+
+<%= render'follow_form' if logged_in? %>
+
 <% if current_user?(@user) %>
     <div class="center">
     <%= link_to "本を投稿する", new_post_path, class: "btn btn-lg btn-primary" %>

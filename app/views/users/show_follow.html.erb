@@ -2,10 +2,9 @@
 <div class="row">
   <aside class="col-md-4">
     <section class="user_info">
-      <%= gravatar_for @user %>
-      <h1><%= @user.name %></h1>
-      <span><%= link_to "view my profile", @user %></span>
-      <span><b>posts:</b> <%= @user.posts.count %></span>
+      <h1><%= gravatar_for @user %></h1>
+      <h1><%= link_to "#{@user.name}", @user %></h1>
+      <h2><b>投稿数:</b> <%= @user.posts.count %></h2>
     </section>
     <section class="stats">
       <%= render 'shared/stats' %>
@@ -17,6 +16,7 @@
         </div>
       <% end %>
     </section>
+    
   </aside>
   <div class="col-md-8">
     <h3><%= @title %></h3>

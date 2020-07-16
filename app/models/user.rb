@@ -1,5 +1,7 @@
 class User < ApplicationRecord
   has_many :posts, dependent: :destroy
+  has_many :favorites
+  has_many :favorite_posts, through: :favorites
   has_many :active_relationships, class_name: "Relationship",
                     foreign_key: "follower_id",
                     dependent: :destroy
@@ -62,4 +64,8 @@ class User < ApplicationRecord
     following.include?(other_user)
   end
 
+  # いいねしているかどうかの判定
+  def favorited_by?(post_id)
+    favorites.where(post_id: post_id).exists?
+  end
 end

@@ -77,6 +77,11 @@ p {
   }
 }
 
+.navbar-light .navbar-toggler {
+  border-color: rgba(0,0,0,0);
+}
+
+
 
 /* footer */
 
@@ -214,6 +219,7 @@ input {
   margin: 10px 0;
 }
 
+
 .main-message{
   font-size: .95rem;
   overflow: hidden;
@@ -245,4 +251,22 @@ input {
   .main-contents{
     margin: 20px 40px 0 40px;
   }
+}
+
+// 本の詳細画面
+.edit-gravatar {
+  display: flex;
+  justify-content: center;
+}
+
+// ユーザーの詳細画面
+.stats {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+// フォロー画面
+.user-info {
+
 }

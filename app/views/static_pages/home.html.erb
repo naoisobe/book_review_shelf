@@ -16,23 +16,26 @@
 <div class="container">
     <div class="row">
         <% @posts.each do |post| %>
-        <div class="col-md-4 col-sm-6 col-xs-12">
-            <%= link_to("/posts/#{post.id}") do %>
+        <div class="book-list col-lg-4 col-md-4 col-sm-6 col-xs-12">
+            <%= link_to post_path(post) do %>
             <div class="main-contents">
-                <div class="main-image">
+
+                <div class="book-image">
                     <img src="http://images-jp.amazon.com/images/P/<%= post[:isbn_code] %>.09.LZZZZZZZ">
                 </div>
+
                 <div class="content-wrapper">
-                    <div clasdddddds="book-title">
-                        <p><%= link_to(post.title,"/posts/#{post.id}") %></p>
-                    </div>
+
+                    
+                    <p><%= link_to "#{post.title}", post_path(post)  %></p>
+
                     <div class="main-message">
                         <%= post[:review] %>
                     </div>
 
                     
                     <div class="right-container">
-                        <div class="main-user"><%= post.user.name %></div>
+                        <div class="main-user">投稿者:<%= link_to "#{post.user.name}", user_path(post.user) %></div>
                     </div>
                 </div>
             </div>

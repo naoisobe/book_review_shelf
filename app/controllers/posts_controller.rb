@@ -7,6 +7,7 @@ class PostsController < ApplicationController
   end
 
   def show
+    @posts = Post.all.order(created_at: :desc)
     @post = Post.find_by(id: params[:id])
     @user = User.find_by(id: @post.user_id)
   end

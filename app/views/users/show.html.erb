@@ -3,23 +3,7 @@
   <%= @user.name %>
 </h1>
 
-<section class="stats">
-    <% @user ||= current_user %>
-    <div class="stats">
-        <a href="<%= following_user_path(@user) %>">
-            <strong id="following" class="stat">
-            <%= @user.following.count %>
-            </strong>
-            フォロー
-        </a>
-        <a href="<%= followers_user_path(@user) %>">
-            <strong id="followers" class="stat">
-            <%= @user.followers.count %>
-            </strong>
-            フォロワー
-        </a>
-    </div>
-</section>
+<%= render 'shared/stats' %>
 
 <%= render'follow_form' if logged_in? %>
 
@@ -29,13 +13,13 @@
     </div>
 <% end %>
 
-<div class="container">
+<div class="container ">
   <div class="row">
       <% @user.posts.each do |post| %>
-      <div class="col-md-4 col-sm-4 col-xs-6">
+      <div class="col-md-4 col-sm-6 col-xs-12">
           <%= link_to("/posts/#{post.id}") do %>
           <div class="main-contents">
-              <div class="main-image">
+              <div class="book-image">
                   <img src="http://images-jp.amazon.com/images/P/<%= post[:isbn_code] %>.09.LZZZZZZZ">
               </div>
               <div class="content-wrapper">

@@ -65,7 +65,7 @@ class PostsController < ApplicationController
       @post = Post.find_by(id: params[:id])
       if @post.user_id != @current_user.id
         flash[:danger] = "権限がありません"
-        redirect_to posts_path
+        redirect_to root_path
       end
     end
 

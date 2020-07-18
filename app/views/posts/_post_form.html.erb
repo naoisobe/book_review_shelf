@@ -1,0 +1,20 @@
+<%= form_with(model: @post, local: true) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+
+  <%= f.label :title, '本のタイトル' %>
+  <%= f.text_field :title, class: 'form-control' %>
+
+  <%= f.label :isbn_code, 'ISBN/ASINコード' %>
+  <%= f.text_field :isbn_code, class: 'form-control' %>
+
+  <%= f.label :summary, '要約' %>
+  <%= f.text_area :summary, class: 'form-control' %>
+
+  <%= f.label :review, '感想' %>
+  <%= f.text_area :review, class: 'form-control' %>
+
+  <%= f.label :note, 'メモ' %>
+  <%= f.text_area :note, class: 'form-control' %>
+
+  <%= f.submit yield(:button_text), class: "btn btn-primary" %>
+<% end %>

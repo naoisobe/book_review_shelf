@@ -5,6 +5,45 @@
     本の読みっぱなし、しちゃっていませんか？
   </h2>
 
-  <%= link_to "Sign up now!", '#', class: "btn btn-lg btn-primary" %>
+  <% if logged_in? %>  
+    <%= link_to "本を投稿する", new_post_path, class: "btn btn-lg btn-primary" %>
+  <%else%>
+    <%= link_to "新規登録はこちら！", signup_path, class: "btn btn-lg btn-primary" %>
+  <% end %>
+  
 </div>
+
+<div class="container">
+    <div class="row">
+        <% @posts.each do |post| %>
+        <div class="book-list col-lg-4 col-md-4 col-sm-6 col-xs-12">
+            <%= link_to post_path(post) do %>
+            <div class="main-contents">
+
+                <div class="book-image">
+                    <img src="http://images-jp.amazon.com/images/P/<%= post[:isbn_code] %>.09.LZZZZZZZ">
+                </div>
+
+                <div class="content-wrapper">
+
+                    
+                    <p><%= link_to "#{post.title}", post_path(post)  %></p>
+
+                    <div class="main-message">
+                        <%= post[:review] %>
+                    </div>
+
+                    
+                    <div class="right-container">
+                        <div class="main-user">投稿者:<%= link_to "#{post.user.name}", user_path(post.user) %></div>
+                    </div>
+                </div>
+            </div>
+            <% end %>
+        </div>
+        <% end %>
+    </div>
+</div>
+
+
 

@@ -77,6 +77,11 @@ p {
   }
 }
 
+.navbar-light .navbar-toggler {
+  border-color: rgba(0,0,0,0);
+}
+
+
 
 /* footer */
 
@@ -103,6 +108,46 @@ footer {
     }
   }
 }
+
+/* sidebar */
+.stats {
+  overflow: auto;
+  margin-top: 0;
+  padding: 0;
+  a {
+    float: left;
+    padding: 0 10px;
+    border-left: 1px solid $gray-lighter;
+    color: gray;
+    &:first-child {
+      padding-left: 0;
+      border: 0;
+    }
+    &:hover {
+      text-decoration: none;
+      color: blue;
+    }
+  }
+  strong {
+    display: block;
+  }
+}
+
+.user_avatars {
+  overflow: auto;
+  margin-top: 10px;
+  .gravatar {
+    margin: 1px 1px;
+  }
+  a {
+    padding: 0;
+  }
+}
+
+.users.follow {
+  padding: 0;
+}
+
 
 /* forms */
 
@@ -161,4 +206,67 @@ input {
     padding: 10px 0;
     border-bottom: 1px solid $gray-lighter;
   }
+}
+
+/*main-contents*/
+
+.content-wrapper{
+  padding: 15px;
+  overflow:hidden;
+}
+
+.book-title{
+  margin: 10px 0;
+}
+
+
+.main-message{
+  font-size: .95rem;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  margin-bottom: 0 !important;
+}
+
+.left-container{
+  float: left;
+  margin-top: 20px;
+}
+
+.right-container{
+  float: right;
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+.isbn-image{
+  width: 200px;
+  margin-top: 10px;
+}
+
+@media screen and (max-width:480px){
+  .main-contents{
+    margin: 20px 40px 0 40px;
+  }
+}
+
+// 本の詳細画面
+.edit-gravatar {
+  display: flex;
+  justify-content: center;
+}
+
+// ユーザーの詳細画面
+.stats {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+// フォロー画面
+.user-info {
+
 }

@@ -45,30 +45,33 @@ RSpec.describe "Users", type: :request do
 
   describe "#update" do
 
-    context "他のuserを編集しようとした場合(ログイン時)" do
+    context "ログインユーザーの場合" do
 
       before do
         @user = FactoryBot.create(:user)
         @other_user = FactoryBot.create(:user, name: "hoge", email: "hoge@hoge.com")
+        post login_path, params: { session: { email: @user.email,
+          password: @user.password } }
       end
+
 
       it "他人のアカウント情報を更新することができない" do
         user_params = FactoryBot.attributes_for(:user, name: "ChangeName")
-        log_in @user
+        # log_in @user
         patch user_path(@other_user), params: {user: user_params}
         expect(@other_user.reload.name).to eq "hoge"
       end
 
       it "自分のアカウント情報は更新することができる" do
         user_params = FactoryBot.attributes_for(:user, name: "ChangeName")
-        log_in @user
+        # log_in @user
         patch user_path(@user), params: {user: user_params}
         expect(@user.reload.name).to eq "ChangeName"
       end
 
       it "ルートページにリダイレクトする" do
         user_params = FactoryBot.attributes_for(:user)
-        log_in @user
+        # log_in @user
         patch user_path(@other_user), params: {user: user_params}
         expect(response).to redirect_to root_path
       end

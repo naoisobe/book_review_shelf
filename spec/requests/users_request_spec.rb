@@ -41,8 +41,6 @@ RSpec.describe "Users", type: :request do
     end
   end
 
-# destroyアクション：ログイン済みでも他人のアカウントを削除できない、未ログインならログインページにリダイレクト
-
   describe "#update" do
 
     context "ログインユーザーの場合" do
@@ -82,24 +80,19 @@ RSpec.describe "Users", type: :request do
 
       before do
         @user = FactoryBot.create(:user)
+        user_params = FactoryBot.attributes_for(:user)
+        patch user_path(@user), params: { id: @user.id, user: user_params}
       end
 
       it "302レスポンスを返すこと" do
-        user_params = FactoryBot.attributes_for(:user)
-        patch user_path(@user), params: { id: @user.id, user: user_params}
         expect(response).to have_http_status "302"
       end
 
       it "ログインページにリダイレクト" do
-        user_params = FactoryBot.attributes_for(:user)
-        patch user_path(@user), params: { id: @user.id, user: user_params}
         expect(response).to redirect_to login_path
       end
 
     end
   end
 
-  describe "#destroy" do
-
-  end
 end

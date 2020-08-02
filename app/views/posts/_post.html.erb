@@ -1,11 +1,15 @@
 <% if current_user.favorited_by?(@post.id) %>
     <td>
-        <%= link_to 'いいね外す', destroy_favorite_path(@post), method: :DELETE %>
-        <%= @post.favorites.count %>
+        <%= link_to destroy_favorite_path(@post), method: :DELETE do %>
+        <i class="fa fa-heart unlike-btn" aria-hidden="true"></i>
+        <% end %>
     </td>
 <% else %>
     <td>
-        <%= link_to 'いいねする', create_favorite_path(@post), method: :POST %>
-        <%= @post.favorites.count %>
+        <%= link_to create_favorite_path(@post), method: :POST do %>
+        <i class="fa fa-heart like-btn" aria-hidden="true"></i>
+        <% end %>
     </td>
 <% end %>
+
+<%= @post.favorites.count %>

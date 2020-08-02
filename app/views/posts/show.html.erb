@@ -4,26 +4,33 @@
         <img src="http://images-jp.amazon.com/images/P/<%= @post.isbn_code %>.09.LZZZZZZZ">
     </div>
 
-    <div class="post-message book-title-show">
-        <h4>本のタイトル</h4>
-        <p><%= @post.title %></p>
+    <div class="center post-message book-title-show">
+        <h5>本のタイトル</h5>
+        <h3><%= @post.title %></h3>
     </div>
         
 
-    <div class="post-message">
+    <div class="center post-message">
         <h4>要約</h4>
-        <p><%= @post.summary %></p>
+        <p class="post_content"><%= @post.summary %></p>
     </div>
 
-    <div class="post-message">
+    <div class="center post-message">
         <h4>感想</h4>
-        <p><%= @post.review %></p>
+        <p class="post_content"><%= @post.review %></p>
     </div>
 
-    <div class="post-message">
+    <div class="center post-message">
         <h4>メモ</h4>
-        <p><%= @post.note %></p>
+        <p class="post_content"><%= @post.note %></p>
     </div>
+
+    <% if @post.user_id == @current_user.id %>
+        <div class ="center">
+            <button type="button" class="btn btn-outline-success"><%= link_to "編集", edit_post_path %></button>
+        <button type="button" class="btn btn-outline-danger"><%= link_to "削除", post_path, method: :delete,data: {confirm: "削除しますか？"} %></button>
+        </div>   
+    <% end %>
 
      <div class="post-user flex space">
         <p class="bold">作成者：<%= link_to "#{@user.name}", user_path(@user) %></p>
@@ -33,13 +40,5 @@
     <div class="post_<%= @post.id %>">
         <%= render 'post', post: @post %>
     </div>
-        
-
-    <% if @post.user_id == @current_user.id %>
-        <ul class="flex flex-right">
-            <li class="content-edit"><%= link_to "編集", edit_post_path %></li>
-            <li class="content-edit"><%= link_to "削除", post_path, method: :delete,data: {confirm: "削除しますか？"} %></li>
-        </ul>
-        
-    <% end %>
+    
 </div>

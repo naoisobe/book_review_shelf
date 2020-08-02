@@ -81,6 +81,11 @@ p {
   border-color: rgba(0,0,0,0);
 }
 
+.menu-btn {
+  padding-top: 9px;
+  margin-left: 67%;
+}
+
 
 
 /* footer */
@@ -247,16 +252,29 @@ input {
   margin-top: 10px;
 }
 
-@media screen and (max-width:480px){
-  .main-contents{
-    margin: 20px 40px 0 40px;
+@media screen and (max-width:720px){
+  .book-list{
+    width: 80%;
+    margin: 0 10% 0 10%;
   }
 }
+
 
 // 本の詳細画面
 .edit-gravatar {
   display: flex;
   justify-content: center;
+}
+
+.show {
+  width: 100%;
+}
+
+.post_content {
+  border: 1px solid rgb(145, 143, 143);
+  text-align: left;
+  border-radius: 5px;
+  padding: 20px;
 }
 
 // ユーザーの詳細画面
@@ -266,7 +284,23 @@ input {
   margin-bottom: 10px;
 }
 
-// フォロー画面
-.user-info {
-
+// フォローフォーム
+#follow_form {
+  margin: 0 35%;
 }
+
+.like-btn {
+  width: 25px;
+  height: 30px;
+  font-size: 25px;
+  color: #808080; 
+  margin-left: 20px;
+  }
+ 
+ .unlike-btn {
+  width: 25px;
+  height: 30px;
+  font-size: 25px;
+  color: #e54747;
+  margin-left: 20px;
+  }
